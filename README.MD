@@ -18,7 +18,6 @@ pckView is a tool to view .pck graphics files with a capability to export the gr
 1. [War Action](https://github.com/americusmaximus/WarAction)
 2. [War Motion](https://github.com/americusmaximus/WarMotion)
 3. [War Storm](https://github.com/americusmaximus/WarStorm)
-4. [FZFS](https://github.com/americusmaximus/FZFS)
 
 ## Legal
 1. The source code in this repository is mostly produced by reverse engineering the original binaries. There are a couple of exceptions for reverse engineering under DMCA -- documentation, interoperability, fair use. See goals section for the interoperability and fair use cases. The documentation is needed to support those. Also please see an article about [software preservation](https://en.wikipedia.org/wiki/Digital_preservation).

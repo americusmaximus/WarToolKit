@@ -123,7 +123,7 @@ BOOL OpenImage(HANDLE hFile, IMAGECONTAINERPTR image)
         DDSURFACEDESC2 desc;
         ZeroMemory(&desc, sizeof(DDSURFACEDESC2));
 
-        desc.dwSize = sizeof(DDSURFACEDESC);
+        desc.dwSize = sizeof(DDSURFACEDESC2);
 
         if (FAILED(image->Surfaces[i]->Lock(NULL, &desc, DDLOCK_NOSYSLOCK | DDLOCK_WAIT, NULL))) { fail = TRUE; break; }
 
