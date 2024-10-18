@@ -1,0 +1,3 @@
+[submodule "SDK/zlib"]
+	path = SDK/zlib
+	url = https://github.com/americusmaximus/zlib
