@@ -14,6 +14,9 @@ git clone --recurse-submodules https://github.com/americusmaximus/WarToolKit
 ## pckView
 pckView is a tool to view .pck graphics files with a capability to export the grapchics into bitmap files.
 
+## SUE & UNSUE
+Sue and unsue are tools to create .sue archive files and unpack them respectively.
+
 ## Similar & Related Projects
 1. [War Action](https://github.com/americusmaximus/WarAction)
 2. [War Motion](https://github.com/americusmaximus/WarMotion)
