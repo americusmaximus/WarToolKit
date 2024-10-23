@@ -186,6 +186,7 @@
     <ClInclude Include="Base.hxx" />
     <ClInclude Include="Content.hxx" />
     <ClInclude Include="File.hxx" />
+    <ClInclude Include="Resources.hxx" />
     <ClInclude Include="State.hxx" />
     <ClInclude Include="Zip.hxx" />
   </ItemGroup>
@@ -193,6 +194,9 @@
     <ProjectReference Include="..\zlib\zlib.vcxproj">
       <Project>{6c8d5ce6-2d5c-42ce-842f-120ae5f23aa7}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
