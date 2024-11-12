@@ -25,11 +25,12 @@ SOFTWARE.
 
 #include <stdlib.h>
 
+#pragma pack(push, 1)
 typedef struct ImageHeader
 {
-    USHORT Offset;
-    USHORT Unknown;
+    UINT Offset;
 } IMAGEHEADER, * IMAGEHEADERPTR;
+#pragma pack(pop)
 
 #pragma pack(push, 1)
 typedef struct PackedPixel
@@ -44,8 +45,8 @@ typedef struct ImageFrame
 {
     SHORT X;
     SHORT Y;
-    USHORT Width;
-    USHORT Height;
+    SHORT Width;
+    SHORT Height;
     BYTE Colors; // ???
     USHORT Next;
     PACKEDPIXEL Pixels[1];
