@@ -104,12 +104,7 @@ void AcquireArchiveItem(ARCHIVEITEMDESCRIPTORPTR item, const unsigned archive, c
 
     for (int i = 0; i < MAX_ARCHIVE_ITEM_COUNT; i++)
     {
-        if (State.Items[indx].Type != ARCHIVEITEMTYPE_NONE)
-        {
-            indx = (indx + 1) & 0x80000FFF;
-
-            if (indx & 0xFFFFF000) { indx = ((indx - 1) | 0x80000FFF) + 1; }
-        }
+        if (State.Items[indx].Type != ARCHIVEITEMTYPE_NONE) { indx = (indx + 1) % MAX_ARCHIVE_ITEM_COUNT; }
     }
 
     State.Items[indx].Name = name;
@@ -132,9 +127,7 @@ int AcquireArchiveItemIndex(const char* name)
     {
         if (State.Items[indx].Type == ARCHIVEITEMTYPE_NONE || _strcmpi(State.Items[indx].Name, name) == 0) { return indx; }
 
-        indx = (indx + 1) & 0x80000FFF;
-
-        if (indx & 0xFFFFF000) { indx = ((indx - 1) | 0x80000FFF) + 1; }
+        indx = (indx + 1) % MAX_ARCHIVE_ITEM_COUNT;
     }
 
     return INVALID_ARCHIVE_ITEM_INDEX;
