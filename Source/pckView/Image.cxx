@@ -130,9 +130,9 @@ BOOL OpenImage(HANDLE hFile, IMAGECONTAINERPTR image)
 
         IMAGEFRAMEPTR frame = GetImageFrame(content, i);
 
-        for (UINT x = 0; x < frame->Height; x++)
+        for (SHORT x = 0; x < frame->Height; x++)
         {
-            UINT filled = 0;
+            SHORT filled = 0;
             PACKEDPIXELPTR pixels = GetImageFramePixels(frame, x);
             DWORD_PTR finish = (DWORD_PTR)GetImageFramePixels(frame, x + 1) - 2;
 
@@ -147,7 +147,7 @@ BOOL OpenImage(HANDLE hFile, IMAGECONTAINERPTR image)
                 {
                     USHORT pixel = pixels->Pixel;
 
-                    for (UINT xx = 0; xx < count; xx++)
+                    for (BYTE xx = 0; xx < count; xx++)
                     {
                         if (filled + xx < frame->Width)
                         {
@@ -162,7 +162,7 @@ BOOL OpenImage(HANDLE hFile, IMAGECONTAINERPTR image)
                     // Individual colors
                     USHORT* individual = &pixels->Pixel;
 
-                    for (UINT xx = 0; xx < count; xx++)
+                    for (BYTE xx = 0; xx < count; xx++)
                     {
                         if (filled + xx < frame->Width)
                         {
