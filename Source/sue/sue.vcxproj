@@ -74,33 +74,38 @@
     <OutDir>$(SolutionDir)Bin\x32\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Obj\x32\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).x32</TargetName>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\..\SDK\zlib;</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)Bin\x32\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Obj\x32\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).x32</TargetName>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\..\SDK\zlib;</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Obj\x64\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).x64</TargetName>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\..\SDK\zlib;</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Obj\x64\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).x64</TargetName>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\..\SDK\zlib;</ExternalIncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_NONSTDC_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
+      <DisableSpecificWarnings>6387</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -113,13 +118,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_NONSTDC_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
+      <DisableSpecificWarnings>6387</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,13 +138,14 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_NONSTDC_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
+      <DisableSpecificWarnings>6387</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,13 +158,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_NONSTDC_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
+      <DisableSpecificWarnings>6387</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -167,12 +175,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Archive.cxx" />
     <ClCompile Include="Main.cxx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\zlib\zlib.vcxproj">
       <Project>{6c8d5ce6-2d5c-42ce-842f-120ae5f23aa7}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Archive.hxx" />
+    <ClInclude Include="Base.hxx" />
+    <ClInclude Include="Resources.hxx" />
+    <ClInclude Include="State.hxx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
