@@ -21,7 +21,6 @@ SOFTWARE.
 */
 
 #include "State.hxx"
-#include "Zip.hxx"
 
 #include <stdio.h>
 #include <zlib.h>
@@ -79,14 +78,14 @@ void* ReadArchiveDetails(File* file, unsigned* count)
 
     file->Read(&desc, sizeof(ARCHIVEDESCRIPTOR));
 
-    void* src = malloc(desc.Size);
+    Bytef* src = (Bytef*)malloc(desc.Size);
 
     unsigned length = desc.Length * desc.Count;
     void* dst = malloc(length);
 
     file->Read(src, desc.Size);
 
-    UnZip(dst, &length, src, desc.Size);
+    uncompress((Bytef*)dst, (uLong*)&length, src, desc.Size);
 
     if (count != NULL) { *count = desc.Count; }
 
@@ -366,17 +365,17 @@ void* ReadArchiveItemChunk(const int indx, const int chunk)
 
         State.Archives[archive].File.SetPosition(State.Archives[archive].Offsets[index], FILEOPENOPTIONS_READ);
         
-        unsigned size = State.Archives[archive].Offsets[index + 1] - State.Archives[archive].Offsets[index];
+        const unsigned size = State.Archives[archive].Offsets[index + 1] - State.Archives[archive].Offsets[index];
 
         unsigned length = AcquireArchiveItemChunkLength(indx, State.Items[indx].Chunk * chunk);
         
-        void* content = malloc(size);
+        Bytef* content = (Bytef*)malloc(size);
 
         result = InitializeArchiveItemChunk(indx, chunk, length);
 
         if (State.Archives[archive].File.Read(content, size) != size) { return NULL; }
 
-        UnZip(result, &length, content, size);
+        uncompress((Bytef*)result, (uLongf*)&length, content, size);
 
         free(content);
     }

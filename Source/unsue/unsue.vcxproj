@@ -179,7 +179,6 @@
     <ClCompile Include="Content.cxx" />
     <ClCompile Include="File.cxx" />
     <ClCompile Include="Main.cxx" />
-    <ClCompile Include="Zip.cxx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Archive.hxx" />
@@ -188,7 +187,6 @@
     <ClInclude Include="File.hxx" />
     <ClInclude Include="Resources.hxx" />
     <ClInclude Include="State.hxx" />
-    <ClInclude Include="Zip.hxx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\zlib\zlib.vcxproj">
